@@ -86,13 +86,6 @@ function LoginForm() {
           Log In
         </Button>
       </form>
-
-      <p className="mt-6 text-sm text-foreground/80">
-        Create a new account.{" "}
-        <Link href="/login" className="font-semibold text-primary hover:underline">
-          Sign In
-        </Link>
-      </p>
     </div>
   );
 }
