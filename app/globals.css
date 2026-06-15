@@ -1,0 +1,200 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+
+  --background: #f3f4f6;
+  --foreground: #18181b;
+
+  --card: #ffffff;
+  --card-foreground: #18181b;
+
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+
+  /* Brand orange (primary buttons / accents) */
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+
+  --accent: #fff3ec;
+  --accent-foreground: #c2410c;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #e7e5e4;
+  --input: #e7e5e4;
+  --ring: #f97316;
+
+  /* Sidebar (rust / burnt orange) */
+  --sidebar: #bc4a1b;
+  --sidebar-foreground: #ffffff;
+  --sidebar-muted: #f5d9cb;
+  --sidebar-active: #f26b21;
+  --sidebar-active-foreground: #ffffff;
+
+  /* Soft cream used for profile inputs */
+  --soft: #fff3ec;
+
+  /* chart palette */
+  --chart-1: #f97316;
+  --chart-2: #c2410c;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-active-foreground: var(--sidebar-active-foreground);
+  --color-soft: var(--soft);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* thin custom scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+
+/* ── React Quill editor ───────────────────────────────────────────────── */
+.rich-editor .ql-toolbar.ql-snow,
+.rich-editor .ql-container.ql-snow {
+  border-color: var(--border);
+}
+.rich-editor .ql-toolbar.ql-snow {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.rich-editor .ql-container.ql-snow {
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+.rich-editor .ql-editor {
+  min-height: 50vh;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.rich-editor .ql-snow .ql-stroke {
+  stroke: #52525b;
+}
+.rich-editor .ql-snow .ql-fill {
+  fill: #52525b;
+}
+.rich-editor .ql-snow.ql-toolbar button:hover .ql-stroke,
+.rich-editor .ql-snow .ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--primary);
+}
+.rich-editor .ql-snow.ql-toolbar button.ql-active .ql-fill {
+  fill: var(--primary);
+}
+
+/* ── Rendered rich content (view mode) ────────────────────────────────── */
+.rich-content {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--foreground) 90%, transparent);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.rich-content * {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.rich-content p {
+  margin: 0 0 1rem;
+}
+.rich-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.75rem;
+}
+.rich-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.75rem;
+}
+.rich-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+.rich-content ul,
+.rich-content ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+.rich-content ul {
+  list-style: disc;
+}
+.rich-content ol {
+  list-style: decimal;
+}
+.rich-content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.rich-content blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  color: var(--muted-foreground);
+  margin: 0 0 1rem;
+}
